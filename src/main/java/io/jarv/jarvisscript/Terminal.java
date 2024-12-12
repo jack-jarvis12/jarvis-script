@@ -1,0 +1,29 @@
+package io.jarv.jarvisscript;
+
+public enum Terminal {
+    IF,
+    THEN,
+    ELSE,
+    WHILE,
+    DO,
+    SKIP,
+    ID,
+    PLUS,
+    MINUS,
+    STAR,
+    TRUE,
+    FALSE,
+    LESS_THAN,
+    EQUALS,
+    AND,
+    OR,
+    BANG,
+    NUM,
+    LEFT_BRACKET,
+    RIGHT_BRACKET,
+    LEFT_CURLY_BRACKET,
+    RIGHT_CURLY_BRACKET,
+    SEMICOLON,
+    LEFT_ARROW,
+    END
+}
