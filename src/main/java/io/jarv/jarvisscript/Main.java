@@ -1,40 +1,47 @@
 package io.jarv.jarvisscript;
 
 
+import com.google.gson.Gson;
 import io.jarv.jarvisscript.Exp.*;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
+import java.util.HashMap;
+
 
 public class Main {
     public static void main(String[] args) {
 //        testLexer();
 //        testParser();
 //        testExecutor();
+        Gson gson = new Gson();
 
         Path programPath = Paths.get(args[0]);
-//        Path configPath = Paths.get(args[1]);
+        Path configPath = Paths.get(args[1]);
 
         try {
             String programContent = Files.readString(programPath);
-//            String configContent = Files.readString(configPath);
+            String configContent = Files.readString(configPath);
 
-//            runProgram("{n <- 5; result <- 1; while 1 < n do {result <- result * n; n <- n - 1}}");
-            runProgram(programContent);
+            HashMap<String, String> terminalsMap = gson.fromJson(configContent, HashMap.class);
+
+
+            runProgram(programContent, terminalsMap);
         } catch (IOException e) {
             System.out.println("Error reading file: " + e.getMessage());
         }
 
     }
 
-    private static void runProgram(String program) {
+    private static void runProgram(String program, HashMap<String, String> terminalsMap) {
         ProgramExecutor executor = new ProgramExecutor();
         executor.executeStatement(
                 (new Parser(
-                        (new Lexer(program)).lex()
+                        (new Lexer(program, terminalsMap)).lex()
                 )).parse()
         );
         executor.printState();

@@ -10,6 +10,7 @@ public class Parser {
     private int pos = 0;
 
     Parser(List<Token> tokens) {
+//        System.out.println(tokens.toString());
         this.tokens = tokens;
     }
 

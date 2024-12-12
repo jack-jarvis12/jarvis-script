@@ -1,6 +1,6 @@
 package io.jarv.jarvisscript.Stmt;
 
-import io.jarv.jarvisscript.Exp.*;
+import io.jarv.jarvisscript.Exp.Exp;
 
 public class CondStmt implements Stmt {
     public final Exp condition;
