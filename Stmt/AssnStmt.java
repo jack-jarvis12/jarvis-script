@@ -1,0 +1,22 @@
+package Stmt;
+
+import Exp.Exp;
+
+public class AssnStmt implements Stmt {
+    public final String var;
+    public final Exp exp;
+
+    public AssnStmt(String var, Exp exp) {
+        this.var = var;
+        this.exp = exp;
+    }
+
+    @Override
+    public String toString() {
+        return "AssnStmt{" +
+                "var='" + var + '\'' +
+                ", exp=" + exp +
+                '}';
+    }
+    
+}
