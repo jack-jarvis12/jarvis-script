@@ -9,6 +9,7 @@ io/jarv/jarvisscript/Exp/AndExp.class
 io/jarv/jarvisscript/Exp/VarExp.class
 io/jarv/jarvisscript/Exp/TimesExp.class
 io/jarv/jarvisscript/Stmt/Stmt.class
+io/jarv/jarvisscript/Stmt/PrintlnStmt.class
 io/jarv/jarvisscript/Exp/Exp.class
 io/jarv/jarvisscript/Parser.class
 io/jarv/jarvisscript/Exp/MinusExp.class

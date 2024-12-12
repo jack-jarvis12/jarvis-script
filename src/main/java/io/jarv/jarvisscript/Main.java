@@ -44,7 +44,7 @@ public class Main {
                         (new Lexer(program, terminalsMap)).lex()
                 )).parse()
         );
-        executor.printState();
+//        executor.printState();
     }
 
     public static void testLexer() {

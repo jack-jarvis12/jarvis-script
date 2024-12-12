@@ -23,7 +23,7 @@ public class Parser {
         if (peek().terminal == terminal) {
             pos++;
         } else {
-            throw new RuntimeException("Unexpected character");
+            throw new RuntimeException("Unexpected character: "+terminal);
         }
     }
 
@@ -46,7 +46,7 @@ public class Parser {
                 return stmt;
             }
         } else {
-            throw new RuntimeException("Unexpected token");
+            throw new RuntimeException("Unexpected token: "+ peek().terminal);
         }
     }
 
@@ -90,12 +90,16 @@ public class Parser {
             eat(Terminal.PRINT);
             Exp exp = parseAExp();
             return new PrintStmt(exp);
+        } else if (peek().terminal == Terminal.PRINTLN) {
+            eat(Terminal.PRINTLN);
+            Exp exp = parseAExp();
+            return new PrintlnStmt(exp);
         } else if (peek().terminal == Terminal.SLEEP) {
             eat(Terminal.SLEEP);
             Exp exp = parseAExp();
             return new SleepStmt(exp);
         }  else {
-            throw new RuntimeException("Unexpected token");
+            throw new RuntimeException("Unexpected token: "+ peek().terminal);
         }
     }
 
@@ -114,7 +118,7 @@ public class Parser {
                 return stmt;
             }
         } else {
-            throw new RuntimeException("Unexpected token");
+            throw new RuntimeException("Unexpected token: "+ peek().terminal);
         }
     }
 
@@ -131,7 +135,7 @@ public class Parser {
             Exp left = parseBFac();
             return parseBExps(left);
         } else {
-            throw new RuntimeException("Unexpected token");
+            throw new RuntimeException("Unexpected token: "+ peek().terminal);
         }
     }
 
@@ -148,7 +152,7 @@ public class Parser {
             Exp right = parseBFac();
             return parseBExps(new OrExp(left, right));
         } else {
-            throw new RuntimeException("Unexpected token");
+            throw new RuntimeException("Unexpected token: "+ peek().terminal);
         }
     }
 
@@ -165,7 +169,7 @@ public class Parser {
             Exp left = parseBNeg();
             return parseBFacs(left);
         } else {
-            throw new RuntimeException("Unexpected token");
+            throw new RuntimeException("Unexpected token: "+ peek().terminal);
         }
     }
 
@@ -182,7 +186,7 @@ public class Parser {
             Exp right = parseBNeg();
             return parseBFacs(new AndExp(left, right));
         } else {
-            throw new RuntimeException("Unexpected token");
+            throw new RuntimeException("Unexpected token: "+ peek().terminal);
         }
 
     }
@@ -201,7 +205,7 @@ public class Parser {
             Exp negatedExp = parseBNeg();  // Recursively parse the negated expression
             return new NotExp(negatedExp);  // Wrap it in a NotExp
         } else {
-            throw new RuntimeException("Unexpected token");
+            throw new RuntimeException("Unexpected token: "+ peek().terminal);
         }
     }
 
@@ -216,7 +220,7 @@ public class Parser {
             Exp left = parseAExp();  // Parse the left-hand side arithmetic expression
             return parseBRels(left);  // Pass the left-hand side to handle relational operators
         } else {
-            throw new RuntimeException("Unexpected token");
+            throw new RuntimeException("Unexpected token: "+ peek().terminal);
         }
     }
 
@@ -238,7 +242,7 @@ public class Parser {
             Exp right = parseAExp();  // Parse the right-hand side arithmetic expression
             return new EqExp(left, right);  // Create and return an EqExp
         } else {
-            throw new RuntimeException("Unexpected token");
+            throw new RuntimeException("Unexpected token: "+ peek().terminal);
         }
     }
 
@@ -253,7 +257,7 @@ public class Parser {
             Exp left = parseAFac();
             return parseAExps(left);
         } else {
-            throw new RuntimeException("Unexpected token");
+            throw new RuntimeException("Unexpected token: "+ peek().terminal);
         }
     }
 
@@ -282,7 +286,7 @@ public class Parser {
             Exp right = parseAFac();
             return parseAExps(new MinusExp(left, right));
         } else {
-            throw new RuntimeException("Unexpected token");
+            throw new RuntimeException("Unexpected token: "+ peek().terminal);
         }
     }
 
@@ -297,7 +301,7 @@ public class Parser {
             Exp left = parseAtom();
             return parseAFacs(left);
         } else {
-            throw new RuntimeException("Unexpected token");
+            throw new RuntimeException("Unexpected token: "+ peek().terminal);
         }
 
     }
@@ -325,7 +329,7 @@ public class Parser {
             Exp right = parseAtom();
             return parseAFacs(new TimesExp(left, right));
         } else {
-            throw new RuntimeException("Unexpected token");
+            throw new RuntimeException("Unexpected token: "+ peek().terminal);
         }
     }
 
@@ -352,7 +356,7 @@ public class Parser {
             eat(Terminal.RIGHT_BRACKET);
             return e;  // Expression in parentheses
         } else {
-            throw new RuntimeException("Unexpected token");
+            throw new RuntimeException("Unexpected token: "+ peek().terminal);
         }
 
     }

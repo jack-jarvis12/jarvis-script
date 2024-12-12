@@ -27,5 +27,6 @@ public enum Terminal {
     LEFT_ARROW,
     END,
     PRINT,
-    SLEEP
+    SLEEP,
+    PRINTLN
 }

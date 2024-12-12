@@ -72,6 +72,8 @@ public class ProgramExecutor {
         if (statement instanceof SkipStmt) {
             // Do nothing
         } else if (statement instanceof PrintStmt printStmt) {
+            System.out.print(evaluateArithmetic(printStmt.exp));
+        } else if (statement instanceof PrintlnStmt printStmt) {
             System.out.println(evaluateArithmetic(printStmt.exp));
         } else if (statement instanceof SleepStmt sleepStmt) {
             try {

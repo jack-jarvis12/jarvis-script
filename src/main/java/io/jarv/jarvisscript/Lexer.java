@@ -71,6 +71,8 @@ public class Lexer {
             return new Token(Terminal.FALSE);
         } else if (lexeme.toString().equals(terminalsMap.get("print"))) {
             return new Token(Terminal.PRINT);
+        } else if (lexeme.toString().equals(terminalsMap.get("println"))) {
+            return new Token(Terminal.PRINTLN);
         } else if (lexeme.toString().equals(terminalsMap.get("sleep"))) {
             return new Token(Terminal.SLEEP);
         }
