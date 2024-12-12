@@ -71,6 +71,14 @@ public class ProgramExecutor {
     public void executeStatement(Stmt statement) {
         if (statement instanceof SkipStmt) {
             // Do nothing
+        } else if (statement instanceof PrintStmt printStmt) {
+            System.out.println(evaluateArithmetic(printStmt.exp));
+        } else if (statement instanceof SleepStmt sleepStmt) {
+            try {
+                Thread.sleep(evaluateArithmetic(sleepStmt.exp));
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+            }
         } else if (statement instanceof AssnStmt assnStmt) {
             setVar(assnStmt.var, evaluateArithmetic(assnStmt.exp));
         } else if (statement instanceof SeqStmt seqStmt) {

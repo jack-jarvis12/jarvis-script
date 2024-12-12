@@ -2,6 +2,7 @@ io/jarv/jarvisscript/Main.class
 io/jarv/jarvisscript/Exp/EqExp.class
 io/jarv/jarvisscript/Exp/NotExp.class
 io/jarv/jarvisscript/Stmt/AssnStmt.class
+io/jarv/jarvisscript/Stmt/PrintStmt.class
 io/jarv/jarvisscript/Stmt/WhileStmt.class
 io/jarv/jarvisscript/ProgramExecutor.class
 io/jarv/jarvisscript/Exp/AndExp.class
@@ -22,4 +23,5 @@ io/jarv/jarvisscript/Token.class
 io/jarv/jarvisscript/Terminal.class
 io/jarv/jarvisscript/Exp/PlusExp.class
 io/jarv/jarvisscript/Stmt/CondStmt.class
+io/jarv/jarvisscript/Stmt/SleepStmt.class
 io/jarv/jarvisscript/Exp/NumExp.class

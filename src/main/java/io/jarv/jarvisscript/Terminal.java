@@ -25,5 +25,7 @@ public enum Terminal {
     RIGHT_CURLY_BRACKET,
     SEMICOLON,
     LEFT_ARROW,
-    END
+    END,
+    PRINT,
+    SLEEP
 }

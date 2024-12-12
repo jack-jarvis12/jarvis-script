@@ -86,7 +86,15 @@ public class Parser {
             } else {
                 return stmt;
             }
-        } else {
+        } else if (peek().terminal == Terminal.PRINT) {
+            eat(Terminal.PRINT);
+            Exp exp = parseAExp();
+            return new PrintStmt(exp);
+        } else if (peek().terminal == Terminal.SLEEP) {
+            eat(Terminal.SLEEP);
+            Exp exp = parseAExp();
+            return new SleepStmt(exp);
+        }  else {
             throw new RuntimeException("Unexpected token");
         }
     }

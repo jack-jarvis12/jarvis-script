@@ -1,6 +1,7 @@
 /home/jack/JarvisScript/jarvis-script/src/main/java/io/jarv/jarvisscript/Exp/OrExp.java
 /home/jack/JarvisScript/jarvis-script/src/main/java/io/jarv/jarvisscript/Exp/Exp.java
 /home/jack/JarvisScript/jarvis-script/src/main/java/io/jarv/jarvisscript/Exp/LessExp.java
+/home/jack/JarvisScript/jarvis-script/src/main/java/io/jarv/jarvisscript/Stmt/PrintStmt.java
 /home/jack/JarvisScript/jarvis-script/src/main/java/io/jarv/jarvisscript/Exp/FalseExp.java
 /home/jack/JarvisScript/jarvis-script/src/main/java/io/jarv/jarvisscript/Main.java
 /home/jack/JarvisScript/jarvis-script/src/main/java/io/jarv/jarvisscript/Exp/VarExp.java
@@ -15,6 +16,7 @@
 /home/jack/JarvisScript/jarvis-script/src/main/java/io/jarv/jarvisscript/Terminal.java
 /home/jack/JarvisScript/jarvis-script/src/main/java/io/jarv/jarvisscript/Lexer.java
 /home/jack/JarvisScript/jarvis-script/src/main/java/io/jarv/jarvisscript/Token.java
+/home/jack/JarvisScript/jarvis-script/src/main/java/io/jarv/jarvisscript/Stmt/SleepStmt.java
 /home/jack/JarvisScript/jarvis-script/src/main/java/io/jarv/jarvisscript/Exp/NotExp.java
 /home/jack/JarvisScript/jarvis-script/src/main/java/io/jarv/jarvisscript/Stmt/WhileStmt.java
 /home/jack/JarvisScript/jarvis-script/src/main/java/io/jarv/jarvisscript/Exp/TrueExp.java
