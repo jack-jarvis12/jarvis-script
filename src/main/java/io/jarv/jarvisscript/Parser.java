@@ -36,6 +36,9 @@ public class Parser {
                         || peek().terminal == Terminal.SKIP
                         || peek().terminal == Terminal.ID
                         || peek().terminal == Terminal.LEFT_CURLY_BRACKET
+                        || peek().terminal == Terminal.PRINT
+                        || peek().terminal == Terminal.PRINTLN
+                        || peek().terminal == Terminal.SLEEP
         ) {
             Stmt stmt = parseStmt();
             Stmt stmts = parseStmts();

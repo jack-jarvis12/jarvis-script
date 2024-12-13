@@ -3,20 +3,24 @@ package io.jarv.jarvisscript;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class Lexer {
     private final String input;
     private int pos = 0;
 
-    private HashMap<String, String> terminalsMap;
+    List<Character> operators;
+
+    private HashMap<String, Object> terminalsMap;
 
     Lexer(String input) {
         this.input = input;
     }
 
-    Lexer(String input, HashMap<String, String> terminalsMap) {
+    Lexer(String input, HashMap<String, Object> terminalsMap) {
         this.terminalsMap = terminalsMap;
         this.input = input;
+//        operators = List.of('=', '+', '-', '!', '*')
     }
 
     private char peek() {
@@ -37,7 +41,7 @@ public class Lexer {
 
     private Token lex_number() {
         StringBuilder lexeme = new StringBuilder();
-        while (peek() >= '0' && peek() <= '9') {
+        while (is_more() && peek() >= '0' && peek() <= '9') {
             char c = peek();
             eat(c);
             lexeme.append(c);
@@ -47,7 +51,10 @@ public class Lexer {
 
     private Token lex_kw_or_id() {
         StringBuilder lexeme = new StringBuilder();
-        while (is_more() && ((peek() >= '0' && peek() <= '9' || peek() >= 'a' && peek() <= 'z' || peek() >= 'A' && peek() <= 'Z' || peek() == '\'' || peek() == '-'))) {
+//        while (is_more() && ((peek() >= '0' && peek() <= '9' || peek() >= 'a' && peek() <= 'z' || peek() >= 'A' && peek() <= 'Z' || peek() == '\'' || peek() == '-'))) {
+        while (is_more() &&
+                ((terminalsMap.get("separator").equals("") && !Character.isWhitespace(peek())
+                        || !terminalsMap.get("separator").equals("") && !(terminalsMap.get("separator")).equals(String.valueOf(peek()))))) {
             char c = peek();
             lexeme.append(c);
             eat(c);
@@ -97,6 +104,9 @@ public class Lexer {
 
         while (is_more()) {
             char c = peek();
+//            System.out.println(c);
+//            System.out.println(terminalsMap.get("separator"));
+//            System.out.println();
             if (c == '=') {
                 eat(c);
                 tokens.add(new Token(Terminal.EQUALS));
@@ -145,13 +155,15 @@ public class Lexer {
                 }
             } else if (peek() >= '0' && peek() <= '9') {
                 tokens.add(lex_number());
-            } else if (peek() >= 'a' && peek() <= 'z') {
-                tokens.add(lex_kw_or_id());
-            } else if (Character.isWhitespace(c)) {
+            } else if (terminalsMap.get("separator").equals("") && Character.isWhitespace(c) || !terminalsMap.get("separator").equals("") && (terminalsMap.get("separator")).equals(String.valueOf(c))) {
                 eat(c);
-            } else {
-                throw new RuntimeException("Unexpected character: " + c + " (position " + pos+")");
+            }  else {
+                tokens.add(lex_kw_or_id());
             }
+//            } else {
+//                System.out.println(terminalsMap);
+//                throw new RuntimeException("Unexpected character: " + c + " (position " + pos+")");
+//            }
         }
 
         tokens.add(new Token(Terminal.END));

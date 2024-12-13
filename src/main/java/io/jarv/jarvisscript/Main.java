@@ -27,7 +27,7 @@ public class Main {
             String programContent = Files.readString(programPath);
             String configContent = Files.readString(configPath);
 
-            HashMap<String, String> terminalsMap = gson.fromJson(configContent, HashMap.class);
+            HashMap<String, Object> terminalsMap = gson.fromJson(configContent, HashMap.class);
 
 
             runProgram(programContent, terminalsMap);
@@ -37,7 +37,7 @@ public class Main {
 
     }
 
-    private static void runProgram(String program, HashMap<String, String> terminalsMap) {
+    private static void runProgram(String program, HashMap<String, Object> terminalsMap) {
         ProgramExecutor executor = new ProgramExecutor();
         executor.executeStatement(
                 (new Parser(
