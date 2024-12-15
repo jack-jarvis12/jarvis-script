@@ -19,29 +19,42 @@ JarvisScript is an interpreted, Turing-complete programming language that enable
 ### `config.json`:
 ```json
 {
-  "plus": "+",
-  "print": "System.out.println"
+	"if": "❓",
+	"then": "⏩",
+	"else": "⏬",
+	"while": "🔄",
+	"do": "🔼",
+	"skip": "🔁",
+	"true": "✅",
+	"false": "❌",
+	"print": "📝",
+	"println": "📝⏬",
+	"sleep": "😴",
+	"separator": ""
 }
 ```
 
 ### `example.jvs`:
 ```javascript
-print("Hello, World!")
-int result = 5 plus 10
-print(result)
+x <- 0 ;
+🔄 ✅ 🔼 {
+    y <- x ;
+    🔄 1 < y 🔼 y <- y - 2 ;
+    ❓ y = 0 ⏩ 📝⏬ x ⏬ 📝⏬ x * 2 ;
+    😴 1000 ;
+    x <- x + 1
+}
 ```
 
 ## Installation and Usage
 
-1. Clone the repository:
-    ```bash
-    git clone https://github.com/your-repo/jarvisscript.git
-    cd jarvisscript
-    ```
-
-2. Compile the interpreter:
-3. Write a JarvisScript program:
-4. Run your JarvisScript program with the JSON configuration file:
+1. Clone the repository
+2. Compile the interpreter with ```mvn install```
+4. Write a JarvisScript program and a JSON configuration file
+5. Run your JarvisScript program with the JSON configuration file:\
+   ```bash
+   java -jar jarvis-script-VERSION-jar-with-depdendencies path/to/program.jvs path/to/config.json
+   ```
 
 ## Use Cases
 
