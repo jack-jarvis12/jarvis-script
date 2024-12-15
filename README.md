@@ -48,10 +48,11 @@ x <- 0 ;
 
 ## Installation and Usage
 
-1. Clone the repository
-2. Compile the interpreter with ```mvn install```
-4. Write a JarvisScript program and a JSON configuration file
-5. Run your JarvisScript program with the JSON configuration file:\
+1. Compile the interpreter:
+   ```bash
+   mvn install
+   ```
+3. Run a JarvisScript program with a JSON configuration file:
    ```bash
    java -jar jarvis-script-VERSION-jar-with-depdendencies path/to/program.jvs path/to/config.json
    ```
